@@ -1,5 +1,6 @@
 package com.codingparadox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,11 +13,14 @@ public class Main {
 		System.out.println("I am paradox.");
 		try{
 		    JSONArrayParser jsonArrayParser = new JSONArrayParser();
-			List<String> strings = jsonArrayParser.parse("data/suggest.json");
-
+			List<String> strings = jsonArrayParser.parse("data/newdata.json");
+			System.out.println(strings.size());
 			for(String s : strings){
+				//if(s.trim().isEmpty()) continue;
+				System.out.println("===================");
 				System.out.println(s);
 			}
+			System.out.println(strings.size());
 		}
 		catch(Exception e){
 			//e.printStackTrace();

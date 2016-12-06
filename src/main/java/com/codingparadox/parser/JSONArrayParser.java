@@ -31,19 +31,27 @@ public class JSONArrayParser {
 
 			String line = br.readLine();
 			
-			int bracketCounter=0;
+			int bracketCounter = 0;
 			boolean addChar = false;
 			
 			while(line != null){
+			    line = line.trim();
+
+			    // if empty line -> skip
+			    if(line.isEmpty()){
+				    line = br.readLine();
+                    continue;
+                }
 				
 				for(int i=0; i<line.length(); ++i){
 					char c = line.charAt(i);
 
+					// start of the array or the comma that separates two JSON
 					if((c == '[' || c == ']' || c==',') && bracketCounter == 0){
 						addChar = false;
 					}
 					
-					// start of our main json
+					// start of our THE main json
 					else if(c == '{' && bracketCounter == 0){
 						addChar = true;
 						bracketCounter++;
@@ -75,13 +83,16 @@ public class JSONArrayParser {
 					if(bracketCounter == 0 ){
 						addChar = true;
 						String s = tempSB.toString();
-						toReturn.add(s.trim());
+						s = s.trim();
+
+						// if string is not empty, add to the list
+						if(!s.isEmpty()) toReturn.add(s.trim());
 						tempSB = new StringBuilder();
 					}
 					
 				}
 
-				tempSB.append("\n");
+				//tempSB.append("\n");
 				line = br.readLine();
 			}
 			
@@ -90,7 +101,6 @@ public class JSONArrayParser {
 		
 		finally{
 		}
-
 	}
 }
 
