@@ -1,0 +1,25 @@
+[
+
+{
+    "my-suggest-1" : {
+      "text" : "I am enginer",
+      "term" : {
+        "field" : "user"
+      }
+    },
+
+    "my-suggest-2" : {
+      "text" : "I ma",
+      "term" : {
+        "field" : "body"
+      }
+    }
+}
+
+,
+
+{
+	"name" : "nishan"
+}
+
+]

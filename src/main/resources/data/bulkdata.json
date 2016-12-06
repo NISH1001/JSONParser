@@ -1,0 +1,14 @@
+[
+{
+    "user" : "Ram",
+    "title" : "Engineer",
+    "body" : "I am an electornics engineer"
+},
+
+{
+    "user" : "Shyam",
+    "title" : "Engineer",
+    "body" : "I am a computer engineer"
+}
+
+]

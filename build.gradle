@@ -1,0 +1,41 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+mainClassName = 'com.codingparadox.Main'
+
+run{
+    standardInput = System.in
+}
+
+test{
+	useTestNG()
+	include 'com/codingparadox/**'
+
+	// show standard out and standard error of the test JVM(s) on the console
+  	testLogging.showStandardStreams = true
+  	
+  	// listen to events in the test execution lifecycle
+  	beforeTest { descriptor ->
+    	logger.lifecycle("Running test: " + descriptor)
+  	}
+  	
+  	// listen to standard out and standard error of the test JVM(s)
+  	onOutput { descriptor, event ->
+    	logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+  	}
+
+}
+
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+    //jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+	testCompile group: 'org.testng', name: 'testng', version: '6.9.13.6'
+}
